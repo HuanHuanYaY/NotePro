@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.notepro.dao.Co2DataDao">
+
+    <insert id="InsertCo2DataInClass" parameterType="com.example.notepro.domain.Co2Data">
+        insert into co2data(data_type, co2, deviceid)
+        values (#{data_type},#{co2},#{deviceid})
+    </insert>
+
+
+
+</mapper>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.notepro.dao.OccupyDao">
+    <select id="FindAllOccupyByIdandTime" resultType="com.example.notepro.domain.Occupy">
+        select *
+        from occupy
+        where device_id=#{device_id} and convert(create_time,CHAR) like CONCAT(#{create_time},'%');
+    </select>
+
+    <select id="FindAllOccupyByTime" resultType="com.example.notepro.domain.Occupy">
+        select *
+        from occupy
+        where convert(create_time,CHAR) like CONCAT(#{create_time},'%');
+    </select>
+
+    <!--    <select id="FindAllDataByIdandTime" resultType="com.example.notepro.domain.Co2Data">-->
+    <!--        select *-->
+    <!--        from co2data-->
+    <!--        where deviceid=#{deviceid} and create_time=#{create_time};-->
+    <!--    </select>-->
+
+    <insert id="InsertOccupy" parameterType="com.example.notepro.domain.Occupy">
+        insert into occupy(data_type, occupy, device_id)
+        values (#{data_type},#{occupy},#{device_id})
+    </insert>
+
+    <select id="FindFreeTime" resultType="int">
+        select COUNT(*) AS zero_count
+        from occupy
+        WHERE occupy = 0
+          AND device_id = #{device_id}
+          AND convert(create_time,CHAR) like CONCAT(#{create_time},'%');
+    </select>
+
+    <select id="FindOccupyTime" resultType="int">
+        select COUNT(*) AS one_count
+        from occupy
+        WHERE occupy = 1
+          AND device_id = #{device_id}
+          AND convert(create_time,CHAR) like CONCAT(#{create_time},'%');
+    </select>
+
+
+
+</mapper>

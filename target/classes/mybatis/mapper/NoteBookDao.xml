@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.notepro.dao.NoteBookDao">
+    <select id="FindAllNoteNameByUserID" resultType="com.example.notepro.domain.NoteBook">
+        select * from NoteBook where userid=#{userid} ;
+    </select>
+
+    <select id="FindAllNoteFileNameByUserId" resultType="com.example.notepro.domain.NoteBook">
+        select notefilename,bref from NoteBook where userid=#{userid} ;
+    </select>
+
+
+    <select id="FindAllNoteContentByUserIdandFile" resultType="com.example.notepro.domain.NoteBook">
+        select noteContent from NoteBook where userid=#{userid} and noteFileName=#{noteFileName};
+    </select>
+
+    <update id="updateNoteContentByUserIDAndFile">
+        update notebook
+        set notecontent = #{noteContent}
+        where userid = #{userid} and notefilename = #{noteFileName}
+    </update>
+    
+    <insert id="newNoteFile">
+        insert into notebook (userid, notefilename, notecontent, bref)
+        values (#{userid},#{noteFileName},#{noteContent},#{bref})
+    </insert>
+
+    <delete id="deleteNoteFile">
+        delete from notebook where userid=#{userid} and notefilename=#{noteFileName}
+    </delete>
+
+
+</mapper>
