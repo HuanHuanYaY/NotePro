@@ -4,17 +4,17 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.notepro.dao.Co2DataDao">
     <select id="FindAllDataByIdandTime" resultType="com.example.notepro.domain.Co2Data">
-        select *
+        select co2,deviceid,create_time
         from co2data
         where deviceid=#{deviceid} and convert(create_time,CHAR) like CONCAT(#{create_time},'%');
     </select>
     <select id="FindAllDataByTime" resultType="com.example.notepro.domain.Co2Data">
-        select *
+        select co2,deviceid,create_time
         from co2data
         where convert(create_time,CHAR) like CONCAT(#{create_time},'%');
     </select>
     <select id="FindAllDataByTimeFenYe" resultType="com.example.notepro.domain.Co2Data">
-        select *
+        select co2,deviceid,create_time
         from co2data
         where convert(create_time,CHAR) like CONCAT(#{create_time},'%')
         LIMIT #{pageNumber}, #{pageSize}
