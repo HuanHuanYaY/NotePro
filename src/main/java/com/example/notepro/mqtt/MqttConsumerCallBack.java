@@ -25,13 +25,6 @@ public class MqttConsumerCallBack implements MqttCallback {
     public void connectionLost(Throwable throwable) {
 
         System.out.println("与服务器断开连接，可重连");
-<<<<<<< HEAD
-
-
-    }
-
-
-=======
         reconnect();
 
     }
@@ -66,7 +59,6 @@ public class MqttConsumerCallBack implements MqttCallback {
             System.out.println("重连失败");
         }
     }
->>>>>>> 1e6a384ee17ca7d9953329651009fc164714acd9
 
 
     @Override

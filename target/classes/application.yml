@@ -13,11 +13,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     #MQTT配置
   mqtt:
-<<<<<<< HEAD
-    #MQTT服务端地址，端口默认为11883，如果有多个，用逗号隔开tcp://aws2.zetakey.com:1883
-=======
     #MQTT服务端地址，端口默认为11883，如果有多个，用逗号隔开
->>>>>>> 1e6a384ee17ca7d9953329651009fc164714acd9
     url: tcp://aws2.zetakey.com:1883
     #用户名
     username:
@@ -37,6 +33,3 @@ mybatis:
 #jwt:
 #  secret: 1T7e3t3AhK9kS2DdF6gZr4e7hWmYq3t5vT7e3t3AhK9kS2DdF6gZr4e7hWmYq3t5vT7e3t3AhK9kS2DdF6gZr4e7hWmYq3t5vT7e3t3AhK9kS2DdF6gZr4e7hWmYq3t5v
 #  expiration: 864000
-
-
-
