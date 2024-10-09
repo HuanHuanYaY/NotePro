@@ -25,11 +25,48 @@ public class MqttConsumerCallBack implements MqttCallback {
     public void connectionLost(Throwable throwable) {
 
         System.out.println("与服务器断开连接，可重连");
+<<<<<<< HEAD
 
 
     }
 
 
+=======
+        reconnect();
+
+    }
+
+    private void reconnect() {
+        int reconnectAttempts = 0;
+        int maxReconnectAttempts = 5; // 最大重连次数
+        int reconnectDelay = 5000; // 重连延迟时间，单位毫秒
+
+        while (!mqttClient.isConnected()) {
+            try {
+                System.out.println("正在尝试重连...");
+                mqttClient.connect(options);
+            } catch (MqttException e) {
+                reconnectAttempts++;
+                if (reconnectAttempts > maxReconnectAttempts) {
+                    System.out.println("重连失败次数超过最大值，停止重连");
+                    break;
+                }
+                try {
+                    System.out.println("等待 " + reconnectDelay / 1000 + " 秒后重试");
+                    Thread.sleep(reconnectDelay);
+                } catch (InterruptedException ie) {
+                    // Ignore
+                }
+            }
+        }
+
+        if (mqttClient.isConnected()) {
+            System.out.println("重连成功");
+        } else {
+            System.out.println("重连失败");
+        }
+    }
+>>>>>>> 1e6a384ee17ca7d9953329651009fc164714acd9
 
 
     @Override
